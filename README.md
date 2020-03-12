@@ -111,3 +111,10 @@ You should see the drone spawned on the grass plane. After this, run the command
 rosrun lqr landing_lqr
 ```
 You should see the drone starting from some arbitrarily specified position and then land at the origin.
+
+**Tip** 
+
+1)If you have a nVidia graphics card, you can make the simulation look cleaner with some extra effects like shadows. Just go to the ```pluto.world``` file present in the ```worlds``` directory of the package, and change the ```<shadows>false</shadows>``` line to ```<shadows>true</shadows>```
+
+2)You can change the pilot camera's position to whatever you desire in the file ```pluto.world``` present in the ```worlds``` directory of the package and edit the line ```<xyz>0 -1.5 0.35</xyz>``` in the ```<gui>``` definition. Note that this is a 3D position vector relative to the DRONE and not the environment.
+
