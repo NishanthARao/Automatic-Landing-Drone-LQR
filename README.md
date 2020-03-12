@@ -4,6 +4,8 @@ This simulation is carried out on ROS-melodic and Gazebo9 platform. The drone st
 
 ![Image](https://github.com/NishanthARao/PlutoX-ROS-Joystick-Control/blob/master/Pluto.png)
 
+You can check out the video demonstration here: https://youtu.be/icPwiH_3MI4
+
 The drone matrices are obtained by linearizating the drone dynamics about the hovering equilibrium position. From the Jacobian matrix, we obtain the so called system matrices A and B. Q and R are choosen according to the landing problem. Once we have the A, B, Q, and R matrices, we use the MATLAB command 'lqr' to generate the K matrix. This K matrix is fixed for an LTI system given A, B, Q, and R matrices. Also in our case, the K matrix is a time-invariant matrix.
 
 Further, we have used the NumCpp library as an alternative to Numpy in Python. The reason is that the matrices are huge i.e., of the order 12. Thus matrix computations like matrix multiplications, finding the inverses must be optimized to a large extent in order to use them for real-time applications.
