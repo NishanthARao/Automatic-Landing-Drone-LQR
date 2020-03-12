@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Kwad">
+<!-- ======================================================== -->
+	<xacro:property name="width" value="0.0315" />
+	<xacro:property name="length" value="0.45" />
+	<xacro:property name="height" value="0.01" />
+	<xacro:property name="mass_fr" value="0.5" />
+	<xacro:property name="mass_pr" value="0.00055" />
+	<xacro:property name="pi_value" value="3.14159263" />
+	<xacro:property name="radiusp" value="0.20" />
+	<xacro:property name="prop_loc" value="0.15909" />
+<!-- ======================================================== -->
+    <xacro:include filename="$(find lqr)/urdf/material.xacro" />	
+	<xacro:include filename="$(find lqr)/urdf/pluto.gazebo" />
+<!-- ======================================================== -->
+	<!-- Define inertial macro -->
+	<xacro:macro name="default_inertial" params="mass p ix_value iy_value iz_value" >
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 ${p}" />
+			<mass value="${mass}" />
+			<inertia ixx="${ix_value}" ixy="0" ixz="0"
+					 iyy="${iy_value}" iyz="0" izz="${iz_value}" />
+		</inertial>
+	</xacro:macro> 
+<!-- ======================================================== -->
+    <link name="body">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/body.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.0015" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.054}" p="${0}" ix_value="${5.05125e-7}" iy_value="${5.05125e-7}" iz_value="${9e-7}" />
+    </link>  
+<!-- ======================================================== -->
+    <link name="cap">
+        <visual>
+            <origin xyz="0 -0.008 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/cap.dae" scale="0.0088 0.0088 0.0088" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 -0.008 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.008 0.0035 0.001" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${1.104e-8}" iy_value="${5.4167e-8}" iz_value="${6.354167e-8}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="motor1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/motors.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0007 0.0007 0.0025" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${5.5145e-7}" iy_value="${5.5145e-7}" iz_value="${6.125e-10}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="motor2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/motors.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0007 0.0007 0.0025" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${5.5145e-7}" iy_value="${5.5145e-7}" iz_value="${6.125e-10}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="motor3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/motors.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0007 0.0007 0.0025" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${5.5145e-7}" iy_value="${5.5145e-7}" iz_value="${6.125e-10}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="motor4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/motors.dae" scale="0.01 0.01 0.01" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0007 0.0007 0.0025" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${5.5145e-7}" iy_value="${5.5145e-7}" iz_value="${6.125e-10}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="prop1">
+        <visual>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/prop1.dae" scale="0.02 0.02 0.02" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <box size="0.00055 0.00008 0.00001" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.05}" p="${0}" ix_value="${2.7e-7}" iy_value="${1.26e-5}" iz_value="${1.285e-5}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="prop2">
+        <visual>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/prop.dae" scale="0.02 0.02 0.02" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <box size="0.00055 0.00008 0.00001" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.05}" p="${0}" ix_value="${2.7e-7}" iy_value="${1.26e-5}" iz_value="${1.285e-5}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="prop3">
+        <visual>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/prop.dae" scale="0.02 0.02 0.02" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0.025" rpy="0 0 0" />
+            <geometry>
+                <box size="0.00055 0.00008 0.00001" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.05}" p="${0}" ix_value="${2.7e-7}" iy_value="${1.26e-5}" iz_value="${1.285e-5}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="prop4">
+        <visual>
+            <origin xyz="0 0 0.023" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/prop.dae" scale="0.02 0.02 0.02" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0.023" rpy="0 0 0" />
+            <geometry>
+                <box size="0.0055 0.0008 0.0001" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.05}" p="${0}" ix_value="${2.7e-7}" iy_value="${1.26e-5}" iz_value="${1.285e-5}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="guard1">
+        <visual>
+            <origin xyz="-0.0195 -0.0195 0.03" rpy="0 ${-pi_value/2} ${-pi_value/4}" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/guard.stl" scale="0.03 0.03 0.03" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="-0.0195 -0.0195 0.03" rpy="0 ${-pi_value/2} ${-pi_value/4}" />
+            <geometry>
+                <box size="0.0035 0.0035 0.0003" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.001}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${9.1875e-7}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="guard2">
+        <visual>
+            <origin xyz="-0.0195 0.0195 0.03" rpy="0 ${-pi_value/2} ${-3*pi_value/4}" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/guard.stl" scale="0.03 0.03 0.03" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="-0.0195 0.0195 0.03" rpy="0 ${-pi_value/2} ${-3*pi_value/4}" />
+            <geometry>
+                <box size="0.0035 0.0035 0.0003" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.001}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${9.1875e-7}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="guard3">
+        <visual>
+            <origin xyz="0.0195 -0.0195 0.03" rpy="0 ${-pi_value/2} ${pi_value/4}" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/guard.stl" scale="0.03 0.03 0.03" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0.0195 -0.0195 0.03" rpy="0 ${-pi_value/2} ${pi_value/4}" />
+            <geometry>
+                <box size="0.0035 0.0035 0.0003" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.001}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${9.1875e-7}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="guard4">
+        <visual>
+            <origin xyz="0.0195 0.0195 0.03" rpy="0 ${-pi_value/2} ${3*pi_value/4}" />
+            <geometry>
+                <mesh filename="package://lqr/meshes/guard.stl" scale="0.03 0.03 0.03" />
+            </geometry>
+            
+            <material name="black" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0.0195 0.0195 0.03" rpy="0 ${-pi_value/2} ${3*pi_value/4}" />
+            <geometry>
+                <box size="0.0035 0.0035 0.0003" /> 
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${0.001}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${9.1875e-7}" />
+    </link>
+<!-- ======================================================== -->
+    <link name="imu_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+            
+            <material name="red" />
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.01" />
+            </geometry>
+        </collision>
+        <xacro:default_inertial mass="${1e-3}" p="${0}" ix_value="${1e-4}" iy_value="${1e-4}" iz_value="${1e-4}" />
+    </link>
+<!-- ======================================================== -->
+    <joint name="joint_body_cap" type="fixed">
+        <parent link="body" />
+        <child link="cap" />
+        <origin xyz="0 0 0.027" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_motor1" type="fixed">
+        <parent link="body" />
+        <child link="motor1" />
+        <origin xyz="-0.046 -0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_motor2" type="fixed">
+        <parent link="body" />
+        <child link="motor2" />
+        <origin xyz="-0.046 0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_motor3" type="fixed">
+        <parent link="body" />
+        <child link="motor3" />
+        <origin xyz="0.046 -0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_motor4" type="fixed">
+        <parent link="body" />
+        <child link="motor4" />
+        <origin xyz="0.046 0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_prop1" type="continuous">
+        <parent link="body" />
+        <child link="prop1" />
+        <origin xyz="-0.046 -0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <dynamics damping="1"/> 
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_prop2" type="continuous">
+        <parent link="body" />
+        <child link="prop2" />
+        <origin xyz="-0.046 0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <dynamics damping="1"/> 
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_prop3" type="continuous">
+        <parent link="body" />
+        <child link="prop3" />
+        <origin xyz="0.046 -0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <dynamics damping="1"/> 
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_prop4" type="continuous">
+        <parent link="body" />
+        <child link="prop4" />
+        <origin xyz="0.046 0.046 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <dynamics damping="1"/> 
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_motor_prop1_guard" type="fixed">
+        <parent link="motor1" />
+        <child link="guard1" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_motor_prop2_guard" type="fixed">
+        <parent link="motor2" />
+        <child link="guard2" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_motor_prop3_guard" type="fixed">
+        <parent link="motor3" />
+        <child link="guard3" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_motor_prop4_guard" type="fixed">
+        <parent link="motor4" />
+        <child link="guard4" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+    <joint name="joint_body_imu" type="fixed">
+        <parent link="body" />
+        <child link="imu_link" />
+        <origin xyz="0 0 0.02" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+<!-- ======================================================== -->
+   <transmission name="front_right_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_body_prop1">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor1">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="front_left_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_body_prop2">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor2">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="back_right_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_body_prop3">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor3">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="back_left_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_body_prop4">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor4">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+<!-- ======================================================== -->
+</robot>    

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot>
+
+	<!-- ================================= -->
+	<!-- Define Gazebo tags for every link -->
+	<gazebo reference="body">
+	    <material>Gazebo/DarkGrey</material>
+	</gazebo>
+	
+    <gazebo reference="cap">
+        <material>Gazebo/FlatBlack</material>
+	</gazebo>
+    <gazebo reference="motor1">
+        <material>Gazebo/Grey</material>
+	</gazebo>
+    <gazebo reference="motor2">
+        <material>Gazebo/Grey</material>
+	</gazebo>
+    <gazebo reference="motor3">
+        <material>Gazebo/Grey</material>
+	</gazebo>
+    <gazebo reference="motor4">
+        <material>Gazebo/Grey</material>
+	</gazebo>
+    <gazebo reference="prop1">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <maxVel>0.0001</maxVel>
+        <minDepth>0.0001</minDepth>
+        <dampingFactor>0.9</dampingFactor>
+        <material>Gazebo/Black</material>
+	</gazebo>
+	
+    <gazebo reference="prop2">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <maxVel>0.0001</maxVel>
+        <minDepth>0.0001</minDepth>
+        <dampingFactor>0.9</dampingFactor>
+        <material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="prop3">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <maxVel>0.0001</maxVel>
+        <minDepth>0.0001</minDepth>
+        <dampingFactor>0.9</dampingFactor>
+        <material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="prop4">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <maxVel>0.0001</maxVel>
+        <minDepth>0.0001</minDepth>
+        <dampingFactor>0.9</dampingFactor>
+        <material>Gazebo/Black</material>
+	</gazebo>
+    <gazebo reference="guard1">
+        <material>Gazebo/FlatBlack</material>
+	</gazebo>
+    <gazebo reference="guard2">
+        <material>Gazebo/FlatBlack</material>
+	</gazebo>
+    <gazebo reference="guard3">
+        <material>Gazebo/FlatBlack</material>
+	</gazebo>
+    <gazebo reference="guard4">
+        <material>Gazebo/FlatBlack</material>
+	</gazebo>
+	
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNameSpace>/Kwad</robotNameSpace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+
+</robot>

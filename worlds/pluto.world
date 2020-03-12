@@ -1,0 +1,35 @@
+<?xml_version="1.0" ?>
+<sdf version="1.6">
+	<world name="default">
+		<include>
+			<uri>model://grass_plane</uri>
+		</include>
+		
+		<include>
+			<uri>model://sun</uri>
+		</include>
+		
+		<include>
+			<uri>model://construction_cone</uri>
+			<pose>3 0 0 0 0 0</pose>
+		</include>
+		
+		<include>
+			<uri>model://vrc_heightmap_1</uri>
+		</include>
+        
+        <gui>
+			<camera name="user_camera">
+				<pose>-1 0 1 0 0 0</pose>
+				<track_visual>
+					<name>Kwad</name>
+					<static>true</static>
+					<xyz>-0.8 -0.8 0.54</xyz>
+					<inherit_yaw>true</inherit_yaw>
+				</track_visual>
+			</camera>
+		</gui>
+        
+	</world>
+</sdf>
+
