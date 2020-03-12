@@ -1,6 +1,10 @@
 <?xml_version="1.0" ?>
 <sdf version="1.6">
 	<world name="default">
+		<scene>
+			<shadows>false</shadows>
+		</scene>
+		
 		<include>
 			<uri>model://grass_plane</uri>
 		</include>
