@@ -18,13 +18,11 @@ These are the references we have used for the project:<br>
 1. **Install NumCpp**
 ```
 cd ~/Downloads/
-mkdir NumCpp 
-cd NumCpp
 git clone https://github.com/dpilger26/NumCpp.git
 ```
 Build the library:
 ```
-cd ~/Downloads/Numcpp/install/
+cd ~/Downloads/NumCpp/install/
 mkdir build
 cd build
 cmake ..
