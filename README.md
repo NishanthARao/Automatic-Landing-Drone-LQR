@@ -44,6 +44,7 @@ Paste the code in the file. Save it and close the file along with the terminal. 
 https://dpilger26.github.io/NumCpp/doxygen/html/md__c_1__users_pilgeda__documents__git_hub__num_cpp_install__r_e_a_d_m_e.html
 
 2) **Get prerequisite packages**
+
 For the program to work properly, we need to get gazebo-ros-control and some additional dependencies.
 ```
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 
