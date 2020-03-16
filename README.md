@@ -14,9 +14,9 @@ These are the references we have used for the project:<br>
 ```[1]Modelling of Quadcopter: https://www.kth.se/polopoly_fs/1.588039.1550155544!/Thesis%20KTH%20-%20Francesco%20Sabatino.pdf```<br>
 ```[2]The linear Tracking problem: Linear Optimal Control Systems - Huibert Kwakernaak and Raphel Sivan``` 
 
-Other Authors of this Repo:
-https://github.com/SaiKrishnaBV
-https://github.com/n1shetty
+Other Authors of this Repo:<br>
+https://github.com/SaiKrishnaBV<br>
+https://github.com/n1shetty<br>
 
 # Installation
 1. **Install NumCpp**
