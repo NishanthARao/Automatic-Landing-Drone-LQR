@@ -52,6 +52,7 @@ sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control 
 sudo apt-get install ros-melodic-joint-state-controller ros-melodic-effort-controllers ros-melodic-position-controllers
 ```
 3) **Download and Run the simulation**
+
 Initialize your ROS workspace
 ```
 mkdir -p ~/catkin_control_ws/src
